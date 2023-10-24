@@ -29,20 +29,30 @@ from sklearn.metrics import accuracy_score, classification_report
 
 st.title("UTS PPW KELAS A (MODELLING)")
 st.write("-------------------------------------------------------------------------------------------------------------------------")
-st.write("*Nama  : Ovadilla Aisyah Rahma*")
-st.write("*NIM   : 200411100033*")
+st.write("*Nama  : Chendy Tri Wardani")
+st.write("*NIM   : 200411100041*")
 st.write("-------------------------------------------------------------------------------------------------------------------------")
-upload_data, modeling = st.tabs(["Upload Data", "Modeling"])
+upload_data, modeling, recommendation = st.tabs(["Upload Data", "Modeling", "Recommendation"])
 
 
 with upload_data:
     st.write("""# Upload File""")
     st.write("Dataset yang digunakan dari PTA Trunojoyo Madura yang sudah dikelola dengan label (Komputasi dan RPL) dan dilakukan pemodelan. Dataset yang dihasilkan yaitu dataset LDA K-Means")
-    uploaded_files = st.file_uploader("Upload file CSV", accept_multiple_files=True)
-    for uploaded_file in uploaded_files:
-        df = pd.read_csv(uploaded_file)
-        st.write("Nama File Anda = ", uploaded_file.name)
-        st.dataframe(df)
+    file_resto = st.file_uploader("Upload file CSV resto", accept_multiple_files=True)
+    file_user = st.file_uploader("Upload file CSV user", accept_multiple_files=True)
+    file_rating = st.file_uploader("Upload file CSV user", accept_multiple_files=True)
+    for uploaded_file_resto in file_resto:
+        df1 = pd.read_csv(uploaded_file_resto)
+        st.write("Nama File Anda = ", uploaded_file_resto.name)
+        st.dataframe(df1)
+    for uploaded_file_user in file_user:
+        df2 = pd.read_csv(uploaded_file_user)
+        st.write("Nama File Anda = ", uploaded_file_user.name)
+        st.dataframe(df2)
+    for uploaded_file_rating in file_rating:
+        df3 = pd.read_csv(uploaded_file_rating)
+        st.write("Nama File Anda = ", uploaded_file_rating.name)
+        st.dataframe(df3)
 
 #with preporcessing :
     #st.write("""# Preprocessing""")
@@ -195,3 +205,6 @@ with modeling:
                 .interactive()
             )
             st.altair_chart(chart,use_container_width=True)
+
+with recommendation:
+    st.write('hallo cok')
