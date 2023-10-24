@@ -1,5 +1,5 @@
 import streamlit as st
-import functions as f
+import function as f
 
 import pandas as pd
 import numpy as np
