@@ -1,4 +1,6 @@
 import streamlit as st
+import functions as f
+
 import pandas as pd
 import numpy as np
 from sklearn import preprocessing
@@ -36,23 +38,14 @@ upload_data, modeling, recommendation = st.tabs(["Upload Data", "Modeling", "Rec
 
 
 with upload_data:
-    st.write("""# Upload File""")
+    st.write("# Upload File")
     st.write("Recsys Restoran")
-    file_resto = st.file_uploader("Upload file CSV resto", accept_multiple_files=True, key="file_uploader_resto")
-    file_user = st.file_uploader("Upload file CSV user", accept_multiple_files=True, key="file_uploader_user")
-    file_rating = st.file_uploader("Upload file CSV user", accept_multiple_files=True, key="file_uploader_rating")
-    for uploaded_file_resto in file_resto:
-        df1 = pd.read_csv(uploaded_file_resto)
-        st.write("Nama File Anda = ", uploaded_file_resto.name)
-        st.dataframe(df1)
-    for uploaded_file_user in file_user:
-        df2 = pd.read_csv(uploaded_file_user)
-        st.write("Nama File Anda = ", uploaded_file_user.name)
-        st.dataframe(df2)
-    for uploaded_file_rating in file_rating:
-        df3 = pd.read_csv(uploaded_file_rating)
-        st.write("Nama File Anda = ", uploaded_file_rating.name)
-        st.dataframe(df3)
+
+    # Menampilkan file yang diunggah
+    f.upload_and_display_file("resto", "resto")
+    f.upload_and_display_file("user", "user")
+    f.upload_and_display_file("rating", "rating")
+
 
 
 with modeling:
