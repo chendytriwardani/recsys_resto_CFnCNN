@@ -38,9 +38,9 @@ upload_data, modeling, recommendation = st.tabs(["Upload Data", "Modeling", "Rec
 with upload_data:
     st.write("""# Upload File""")
     st.write("Recsys Restoran")
-    file_resto = st.file_uploader("Upload file CSV resto", accept_multiple_files=True)
-    file_user = st.file_uploader("Upload file CSV user", accept_multiple_files=True)
-    file_rating = st.file_uploader("Upload file CSV user", accept_multiple_files=True)
+    file_resto = st.file_uploader("Upload file CSV resto", accept_multiple_files=True, key="file_uploader_resto")
+    file_user = st.file_uploader("Upload file CSV user", accept_multiple_files=True, key="file_uploader_user")
+    file_rating = st.file_uploader("Upload file CSV user", accept_multiple_files=True, key="file_uploader_rating")
     for uploaded_file_resto in file_resto:
         df1 = pd.read_csv(uploaded_file_resto)
         st.write("Nama File Anda = ", uploaded_file_resto.name)
